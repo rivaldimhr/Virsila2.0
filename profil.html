@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebsiteVirsila</title>
-    <link rel="stylesheet" href="css\styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <title>Profile with Photo Upload</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:wght@300;500;600&display=swap">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/stylespro.css">
 </head>
 
 <body>
-    <!--navbar section-->
     <nav class="navbar">
         <div class="navbar__container">
             <ul class="navbar__logo">
@@ -40,10 +38,56 @@
             </ul>
         </div>
     </nav>
+    <div class="wrapper" id="profileForm">
+        <form action="#">
+            <h1>Profile</h1>
+            
+            <!-- Profile Photo Section -->
+            <div class="profile-photo">
+                <div class="photo-container">
+                    <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Photo">
+                </div>
+                <label for="photo-upload" class="upload-btn">Upload Photo</label>
+                <input type="file" id="photo-upload" accept="image/*" onchange="previewImage(event)">
+            </div>
 
+            <!-- Input for Name -->
+            <div class="input-box">
+                <input type="text" placeholder="Full Name" required>
+                <i class='bx bx-user'></i>
+            </div>
 
+            <!-- Input for Email -->
+            <div class="input-box">
+                <input type="email" placeholder="Email Address" required>
+                <i class='bx bx-envelope'></i>
+            </div>
 
-    <script src="js\register.js"></script>
+            <!-- Input for Phone Number -->
+            <div class="input-box">
+                <input type="tel" placeholder="Phone Number" required>
+                <i class='bx bx-phone'></i>
+            </div>
+
+            <button type="submit" class="btn">Save Profile</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const profileImage = document.getElementById('profileImage');
+                profileImage.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
-
 </html>
