@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php'; // Pastikan file koneksi.php sudah benar menghubungkan ke database
+include 'koneksi.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Ambil data dari form
@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = mysqli_real_escape_string($conn, trim($_POST['password']));
     $confirm_password = mysqli_real_escape_string($conn, trim($_POST['confirm_password']));
 
-    // Validasi jika password dan konfirmasi password cocok
     if ($password === $confirm_password) {
         // Periksa apakah username sudah ada di database
         $check_user_query = "SELECT * FROM akun WHERE username='$username'";
@@ -16,20 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($check_result) > 0) {
             echo "<script>alert('Username sudah digunakan, pilih username lain');</script>";
         } else {
-            // Simpan password tanpa hashing (tidak disarankan)
             $query = "INSERT INTO akun (username, password) VALUES ('$username', '$password')";
 
             if (mysqli_query($conn, $query)) {
-                // Jika berhasil mendaftar, redirect ke halaman login
                 header("Location: login.php");
                 exit();
             } else {
-                // Jika terjadi kesalahan saat memasukkan data
                 echo "<script>alert('Pendaftaran gagal, coba lagi');</script>";
             }
         }
     } else {
-        // Jika password dan konfirmasi password tidak cocok
         echo "<script>alert('Password dan Konfirmasi Password tidak cocok');</script>";
     }
 }
@@ -48,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="wrapper">
-        <form action="Register.php" method="POST"> <!-- Pastikan form action mengarah ke file ini -->
+        <form action="Register.php" method="POST"> 
             <h1>Signup</h1>
             <div class="input-box">
                 <input type="text" placeholder="Enter your Username" name="username" required>

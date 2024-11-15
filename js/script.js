@@ -42,7 +42,7 @@ function updateContentAndBackground(index) {
             description: "Pancasila adalah dasar ideologi negara Indonesia yang diresmikan sebagai dasar negara pada 18 Agustus 1945. Kata (Pancasila) berasal dari bahasa Sanskerta, di mana panca berarti lima dan sila berarti prinsip atau asas. Dengan demikian, Pancasila memiliki lima prinsip atau nilai dasar yang menjadi landasan dalam kehidupan berbangsa dan bernegara bagi seluruh rakyat Indonesia. Pancasila dirumuskan oleh para pendiri bangsa sebagai panduan ideologi yang mengikat seluruh elemen masyarakat, tanpa memandang perbedaan suku, agama, ras, atau golongan.",
             bgImage: "Poster Hari Lahir Pancasila.jpg",  
             className: "Poster-Hari-Lahir-Pancasila",
-            videoSrc: "videos/video pancasila.mp4" 
+            videoSrc: "videos/video pancasila.mp4"
         },
         {
             title: "Sumpah Pemuda",
@@ -57,7 +57,7 @@ function updateContentAndBackground(index) {
                 2. Kami putra dan putri Indonesia mengaku berbangsa yang satu, bangsa Indonesia.
                 3. Kami putra dan putri Indonesia menjunjung bahasa persatuan, bahasa Indonesia. "`,
             bgImage: "sumpah pemuda.jpg",
-            videoSrc: "videos/video pancasila.mp4",   // Background image for this content
+            videoSrc: "videos/sumpah pemuda.mp4",   // Background image for this content
             className: "sumpah-pemuda"
         },
         {
@@ -121,7 +121,6 @@ function updateContentAndBackground(index) {
 
     // Change background using changeBg
     changeBg(content.bgImage, content.className);
-
     // Update the content dynamically
     document.querySelector('.content').querySelector('.movie-title').src = content.image;
     document.querySelector('.content').querySelector('h4').innerHTML = `<span>${content.year}</span><span><i>${content.rating}</i></span><span>${content.duration}</span><span>${content.genre}</span>`;
@@ -130,4 +129,6 @@ function updateContentAndBackground(index) {
     const trailerVideo = document.getElementById("trailer-video");
         trailerVideo.src = content.videoSrc;
         trailerVideo.load();
+
 }
+

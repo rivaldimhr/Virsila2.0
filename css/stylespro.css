@@ -354,3 +354,66 @@ body {
     background: #0088cc;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
+
+/* Responsif untuk tampilan mobile */
+@media screen and (max-width: 768px) {
+    body {
+        padding-bottom: 20vh; /* Memberikan padding yang lebih kecil untuk layar kecil */
+    }
+
+    .wrapper {
+        width: 90%; /* Menyesuaikan lebar wrapper agar lebih kecil pada layar kecil */
+        top: 20%; /* Memberikan jarak lebih besar dari atas */
+        left: 5%; /* Memberikan margin kiri yang lebih besar untuk tampilan mobile */
+        position: absolute;
+    }
+
+    .wrapper h1 {
+        font-size: 28px; /* Mengurangi ukuran font pada layar kecil */
+    }
+
+    .profile-photo .photo-container {
+        width: 120px; /* Mengurangi ukuran foto profil */
+        height: 120px; /* Mengurangi tinggi foto profil */
+    }
+
+    .input-box input {
+        font-size: 14px; /* Mengurangi ukuran font di input */
+    }
+
+    .btn {
+        font-size: 16px; /* Mengurangi ukuran tombol pada layar kecil */
+        padding: 8px; /* Memberikan padding yang lebih kecil pada tombol */
+    }
+}
+
+/* Responsif untuk tampilan lebih besar (tablet dan desktop) */
+@media screen and (max-width: 960px) {
+    body {
+        padding-bottom: 200vh; /* Memberikan padding yang lebih kecil */
+    }
+
+    .wrapper {
+        width: 80%; /* Lebar wrapper lebih kecil pada tablet */
+        top: 15%; /* Sedikit lebih rendah dari atas */
+        left: 10%; /* Memberikan margin kiri */
+    }
+
+    .wrapper h1 {
+        font-size: 32px; /* Mengurangi sedikit ukuran font */
+    }
+
+    .profile-photo .photo-container {
+        width: 130px; /* Menyesuaikan ukuran foto profil */
+        height: 130px;
+    }
+
+    .input-box input {
+        font-size: 15px; /* Menyesuaikan ukuran font input */
+    }
+
+    .btn {
+        font-size: 18px; /* Ukuran font tombol lebih besar pada tablet */
+    }
+}
+
