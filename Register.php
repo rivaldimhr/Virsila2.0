@@ -1,31 +1,34 @@
+
 <?php
 include 'koneksi.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Ambil data dari form
-    $username = mysqli_real_escape_string($conn, trim($_POST['username']));
+    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
     $password = mysqli_real_escape_string($conn, trim($_POST['password']));
     $confirm_password = mysqli_real_escape_string($conn, trim($_POST['confirm_password']));
 
-    if ($password === $confirm_password) {
-        // Periksa apakah username sudah ada di database
-        $check_user_query = "SELECT * FROM akun WHERE username='$username'";
-        $check_result = mysqli_query($conn, $check_user_query);
-        
-        if (mysqli_num_rows($check_result) > 0) {
-            echo "<script>alert('Username sudah digunakan, pilih username lain');</script>";
-        } else {
-            $query = "INSERT INTO akun (username, password) VALUES ('$username', '$password')";
-
-            if (mysqli_query($conn, $query)) {
-                header("Location: login.php");
-                exit();
-            } else {
-                echo "<script>alert('Pendaftaran gagal, coba lagi');</script>";
-            }
-        }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Format email tidak valid!');</script>";
     } else {
-        echo "<script>alert('Password dan Konfirmasi Password tidak cocok');</script>";
+        if ($password === $confirm_password) {
+            $check_user_query = "SELECT * FROM account WHERE email='$email'";
+            $check_result = mysqli_query($conn, $check_user_query);
+            
+            if (mysqli_num_rows($check_result) > 0) {
+                echo "<script>alert('email sudah digunakan, pilih email lain!');</script>";
+            } else {
+                $query = "INSERT INTO account (email, password) VALUES ('$email', '$password')";
+
+                if (mysqli_query($conn, $query)) {
+                    echo "<script>alert('Akun berhasil dibuat!'); window.location.href = 'login.php';</script>";
+                    exit();
+                } else {
+                    echo "<script>alert('Pendaftaran gagal, coba lagi.');</script>";
+                }
+            }
+        } else {
+            echo "<script>alert('Password dan Konfirmasi Password tidak cocok!');</script>";
+        }
     }
 }
 ?>
@@ -43,10 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <div class="wrapper">
-        <form action="Register.php" method="POST"> 
+        <form action="Register.php" method="POST">
             <h1>Signup</h1>
             <div class="input-box">
-                <input type="text" placeholder="Enter your Username" name="username" required>
+                <input type="text" placeholder="Enter your Email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
