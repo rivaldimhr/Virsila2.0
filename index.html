@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
     <meta charset="UTF-8">
     <title>Login - HTML & CSS</title>
     <link rel="stylesheet" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css\styleslog.css">
+    <link rel="stylesheet" href="css/styleslog.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-
 </head>
-
 <body>
     <div class="wrapper" id="loginForm">
-        <form action="">
+        <!-- Form Login -->
+        <form id="login_form">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input id="email" type="email" placeholder="Email" required>
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="password" required>
+                <input id="password" type="password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">Remember me</label>
-                <a href="#">forgot password</a>
+                <a href="#">Forgot password</a>
             </div>
-          
-            <button type="submit" class="btn">Login</button>
-
+            <button type="button" id="signIn_btn" class="btn">Login</button>
             <div class="register-link">
                 <p>Don't have account?
                     <a href="Register.html">Register</a>
@@ -42,6 +35,35 @@
         </form>
     </div>
 
-    <script src="js\app.js"></script>
+    <!-- Form Register -->
+    <div class="wrapper" id="registerForm" style="display: none;">
+        <form id="register_form">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input id="name" type="text" placeholder="Full Name" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input id="email" type="email" placeholder="Email" required>
+                <i class='bx bx-envelope'></i>
+            </div>
+            <div class="input-box">
+                <input id="password" type="password" placeholder="Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <button type="button" id="signUp_btn" class="btn">Register</button>
+            <div class="login-link">
+                <p>Already have an account?
+                    <a href="index.html">Login</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="js/login.js"></script>
 </body>
 </html>
