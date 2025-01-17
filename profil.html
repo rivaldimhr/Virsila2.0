@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile with Photo Upload</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:wght@300;500;600&display=swap">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/stylespro.css">
 </head>
 
 <body>
+    <!-- Navbar Section -->
     <nav class="navbar">
         <div class="navbar__container">
             <ul class="navbar__logo">
@@ -25,6 +26,7 @@
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="index.html" class="navbar__links">Logout</a>
+                </li>
                 <li class="navbar__item">
                     <a href="Beranda.html" class="navbar__links">Home</a>
                 </li>
@@ -40,10 +42,12 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Profile Form Section -->
     <div class="wrapper" id="profileForm">
         <form action="#">
             <h1>Profile</h1>
-            
+
             <!-- Profile Photo Section -->
             <div class="profile-photo">
                 <div class="photo-container">
@@ -53,21 +57,19 @@
                 <input type="file" id="photo-upload" accept="image/*" onchange="previewImage(event)">
             </div>
 
-            <!-- Input for Name -->
             <div class="input-box">
-                <input type="text" placeholder="Full Name" required>
+                <input type="text" id="full-name" placeholder="Full Name" required>
                 <i class='bx bx-user'></i>
             </div>
 
             <!-- Input for Email -->
             <div class="input-box">
-                <input type="email" placeholder="Email Address" required>
+                <input type="email" id="email" placeholder="Email Address" required>
                 <i class='bx bx-envelope'></i>
             </div>
 
-            <!-- Input for Phone Number -->
             <div class="input-box">
-                <input type="tel" placeholder="Phone Number" required>
+                <input type="tel" id="phone-number" placeholder="Phone Number" required>
                 <i class='bx bx-phone'></i>
             </div>
 
@@ -76,6 +78,7 @@
     </div>
 
     <script>
+        // Preview uploaded profile image
         function previewImage(event) {
             const input = event.target;
             const file = input.files[0];
@@ -91,6 +94,8 @@
             }
         }
     </script>
-    <script src="js\app.js"></script>
+    <!-- Include profile.js for fetching profile data -->
+    <script type="module" src="js/profile.js"></script>
 </body>
+
 </html>
