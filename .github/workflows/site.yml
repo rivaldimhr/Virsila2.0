@@ -1,0 +1,38 @@
+# Setiap push / pull request: jalankan test end-to-end (Playwright).
+# Push ke main: publikasikan situs (index.html + assets/) ke branch gh-pages.
+name: Situs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  test-dan-publikasi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pasang pytest + Playwright
+        run: |
+          pip install -q pytest playwright
+          python -m playwright install --with-deps chromium >/dev/null
+      - name: Test end-to-end
+        run: python -m pytest tests -v
+      - name: Susun situs
+        run: |
+          mkdir -p _site
+          cp -r index.html assets _site/
+          touch _site/.nojekyll
+      - name: Publikasikan ke gh-pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          force_orphan: true
